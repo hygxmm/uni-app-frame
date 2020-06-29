@@ -1,6 +1,28 @@
 module.exports = {
 	error: '',
 	check(data,rule){
+		for(let key in rule){
+			if(!rule[key].type) return true;
+			switch(rule[key].type){
+				case 'mobile':
+					if(!this.isMobile(data[key])){
+						this.error = rule[key].message;
+						return false;
+					}
+				break;
+				case 'password':
+					if(!this.isPassword(data[key])){
+						this.error = rule[key].message;
+						return false;
+					}
+				break;
+				case 'code':
+				break;
+				case 'invite':
+				break;
+			}
+		}
+		
 		for(let i=0,l=rule.length;i<l;i++){
 			if(!rule[i].checkType) return true;
 			if(!rule[i].name) return true;
@@ -54,6 +76,9 @@ module.exports = {
 	// 验证手机号码
 	isMobile(s){
 		return /^1[0-9]{10}$/.test(s);
+	},
+	isPassword(s){
+		return true;
 	},
 	// 验证电话号码
 	isPhone(s){

@@ -6,7 +6,9 @@
 		<input type="number" password placeholder="密码" v-model="form.password" />
 		<input type="idcard" placeholder="身份证" v-model="form.idcard" />
 		<input type="number" placeholder="验证码" v-model="form.code" />
-		<button @click="handleClick">验证</button>
+		<button class="cu-btn block round" @click="handleClick">验证</button>
+		<view class="margin-top text-theme" @click="tologin">去登陆</view>
+		<button @click="getAddr">测试接口报错是否会跳转登录页</button>
 	</view>
 </template>
 
@@ -39,6 +41,20 @@
 				}else{
 					this.$util.toast(this.$validate.error);
 				}
+			},
+			tologin(){
+				uni.navigateTo({
+					url: '/pages/login/login'
+				})
+				
+			},
+			getAddr(){
+				this.$http.post('v1/5cadcdd909c17')
+				.then(res => {
+					console.log(res);
+				}).catch(err => {
+					console.log(err);
+				});
 			}
 		}
 	}

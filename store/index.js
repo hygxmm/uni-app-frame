@@ -13,17 +13,11 @@ const store = new Vuex.Store({
 		login(state, data) {
 			state.hasLogin = true;
 			state.userInfo = data;
-			uni.setStorage({
-				key: 'USERINFO',
-				data,
-			})
 		},
 		logout(state) {
 			state.hasLogin = false;
 			state.userInfo = null;
-			uni.removeStorage({
-				key: 'USERINFO'
-			})
+			uni.removeStorageSync('USERINFO');
 		},
 		updateUserInfo(state,data){
 			if (state.userInfo) {
@@ -34,9 +28,21 @@ const store = new Vuex.Store({
 			} else {
 				state.userInfo = data;
 			}
-			uni.setStorage({
-				key: 'USERINFO',
-				data,
+			uni.setStorageSync('USERINFO',state.userInfo);
+		},
+		// 防止token失效时,请求失败多次跳转到登录页
+		tologin(){
+			const pages = getCurrentPages();
+			const lastPage = '/' + pages.pop().route;
+			// #ifdef MP-WEIXIN
+			let path = '/pages/login/wxlog';
+			// #endif
+			// #ifndef MP-WEIXIN
+			let path = '/pages/login/login';
+			// #endif
+			if(lastPage == path) return ;
+			uni.navigateTo({
+				url: path
 			})
 		}
 	},
@@ -45,7 +51,7 @@ const store = new Vuex.Store({
 			return state.userInfo && state.userInfo.id || 0;
 		},
 		token(state){
-			return state.userInfo && state.userInfo.user_token || null;
+			return state.userInfo && state.userInfo.user_token || 0;
 		},
     },
 	actions: {

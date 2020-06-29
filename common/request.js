@@ -1,7 +1,8 @@
 import store from '@/store/index.js';
 import config from '@/common/config.js'
+import util from '@/common/util.js';
 
-export default class Request {
+class Request {
     // 默认配置项
     config = {
         baseUrl: config.apiHost,
@@ -14,7 +15,7 @@ export default class Request {
         responseType: 'text',
         // #endif
         // #ifdef MP-ALIPAY || MP-WEIXIN
-        timeout: 30000,
+        timeout: 6000,
         // #endif
         // #ifdef APP-PLUS
         sslVerify: true,
@@ -22,17 +23,33 @@ export default class Request {
         // #ifdef H5
         withCredentials: false
         // #endif
+		loadingTime: 800, // 在此时间内,请求还没回来的话,就显示加载动画
+		timer: null, // 定时器
     }
     // 拦截器
     interceptors = {
         // 请求拦截器
         request: (config) => {
+			console.log("请求拦截器");
+			config.header['USER-TOKEN'] = store.getters.token;
             return config;
-
         },
         // 响应拦截器
         response: (response) => {
-            return response;
+			console.log("响应拦截器");
+			if(response.code == 1){
+				return response;
+			}else if(response.code == -201 ||response.code == -202 || response.code == -203){
+				util.toast(response.msg);
+				store.commit('logout');
+				setTimeout(function(){
+					store.commit('tologin');
+				},800)
+				return false;
+			}else{
+				util.toast(response.msg);
+				return false;
+			}
         }
     }
     // 验证返回状态码
@@ -50,44 +67,33 @@ export default class Request {
      * @prop {Object} options.method - 请求方法
      */
     async request(options = {}) {
+		options.baseUrl = this.config.baseUrl;
+		options.dataType = options.dataType || this.config.dataType;
+		// #ifndef MP-ALIPAY || APP-PLUS
+		options.responseType = options.responseType || this.config.responseType;
+		// #endif
+		// #ifdef MP-ALIPAY || MP-WEIXIN
+		options.timeout = options.timeout || this.config.timeout;
+		// #endif
+		// #ifdef H5
+		options.withCredentials = isBoolean(options.withCredentials) ? options.withCredentials : this.config.withCredentials;
+		// #endif
+		options.url = options.url || '';
+		options.data = options.data || {};
+		options.method = options.method || this.config.method;
+		options.header = { ...this.config.header, ...(options.header || {}) };
+		// #ifdef APP-PLUS
+		options.sslVerify = options.sslVerify || this.config.sslVerify;
+		// #endif
+		options.getTask = options.getTask || this.config.getTask;
+		options = this.interceptors.request(options);
         return new Promise((resolve, reject) => {
-            options.baseUrl = this.config.baseUrl;
-            options.dataType = options.dataType || this.config.dataType;
-            // #ifndef MP-ALIPAY || APP-PLUS
-            options.responseType = options.responseType || this.config.responseType;
-            // #endif
-            // #ifdef MP-ALIPAY || MP-WEIXIN
-            options.timeout = options.timeout || this.config.timeout;
-            // #endif
-            // #ifdef H5
-            options.withCredentials = isBoolean(options.withCredentials) ? options.withCredentials : this.config.withCredentials;
-            // #endif
-            options.url = options.url || '';
-            options.data = options.data || {};
-            options.method = options.method || 'GET';
-            // options.params = options.params || {};
-            options.header = { ...this.config.header, ...(options.header || {}) };
-            options.custom = { ...this.config.custom, ...(options.custom || {}) };
-            // #ifdef APP-PLUS
-            options.sslVerify = options.sslVerify === undefined ? this.config.sslVerify : options.sslVerify;
-            // #endif
-            options.getTask = options.getTask || this.config.getTask;
-            // 
-            // let next = true;
-            // 
-
-            // const cancel = (t = 'handle cancel', config = options) => {
-            //     const err = {
-            //         errMsg: t,
-            //         config: config
-            //     }
-            //     reject(err)
-            //     next = false
-            // }
-            // const handleRe = { ...this.requestBeforeFun(options, cancel) };
-            // const _config = { ...handleRe };
-            // if (!next) return;
-            // 
+			if(!this.config.timer){
+				this.config.timer = setTimeout(() => {
+					uni.showLoading();
+					this.config.timer = null;
+				},this.config.loadingTime);
+			}
             const requestTask = uni.request({
                 url: options.baseUrl + options.url,
                 data: options.data,
@@ -107,24 +113,33 @@ export default class Request {
                 withCredentials: options.withCredentials,
                 // #endif
                 complete: (response) => {
-                    // response.config = handleRe
-                    if (this.validateStatus(response.statusCode)) { // 成功
-                        response = this.interceptors.response(response)
-                        resolve(response)
-                    } else {
-                        response = this.interceptors.response(response)
-                        reject(response)
-                    }
+					// 请求返回后,隐藏loading
+					uni.hideLoading();
+					// 清除定时器,返回的快的话,无须显示loading
+					this.config.timer && clearTimeout(this.config.timer);
+					if(response.statusCode == 200){
+						let result = this.interceptors.response(response.data);
+						if(result){
+							resolve(result);
+						}else{
+							reject(response.data);
+						}
+					}else{
+						if(response.errMsg){
+							util.alert(response.errMsg);
+						}
+						reject(response);
+					}
                 }
             })
         })
     }
     // GET 请求
-    get(url, data, options) {
+    get(url, data = {}, options) {
         return this.request({ url, data, method: 'GET', ...options });
     }
     // POST 请求
-    post(url, data, options) {
+    post(url, data = {}, options) {
         return this.request({ url, data, method: 'POST', ...options });
     }
     /**
@@ -189,3 +204,5 @@ export default class Request {
         })
     }
 }
+
+export default new Request;
