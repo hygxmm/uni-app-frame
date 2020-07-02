@@ -21,7 +21,7 @@ class Request {
         sslVerify: true,
         // #endif
         // #ifdef H5
-        withCredentials: false
+        withCredentials: false,
         // #endif
 		loadingTime: 800, // 在此时间内,请求还没回来的话,就显示加载动画
 		timer: null, // 定时器
@@ -76,7 +76,7 @@ class Request {
 		options.timeout = options.timeout || this.config.timeout;
 		// #endif
 		// #ifdef H5
-		options.withCredentials = isBoolean(options.withCredentials) ? options.withCredentials : this.config.withCredentials;
+		options.withCredentials = options.withCredentials ? options.withCredentials : this.config.withCredentials;
 		// #endif
 		options.url = options.url || '';
 		options.data = options.data || {};

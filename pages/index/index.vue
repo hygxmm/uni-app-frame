@@ -9,6 +9,7 @@
 		<button class="cu-btn block round" @click="handleClick">验证</button>
 		<view class="margin-top text-theme" @click="tologin">去登陆</view>
 		<button @click="getAddr">测试接口报错是否会跳转登录页</button>
+		<button @click="navToCustomer">联系客服</button>
 	</view>
 </template>
 
@@ -46,7 +47,6 @@
 				uni.navigateTo({
 					url: '/pages/login/login'
 				})
-				
 			},
 			getAddr(){
 				this.$http.post('v1/5cadcdd909c17')
@@ -55,6 +55,12 @@
 				}).catch(err => {
 					console.log(err);
 				});
+			},
+			// 联系客服
+			navToCustomer(){
+				uni.navigateTo({
+					url: '/pages/chat/chat?kfid=1'
+				})
 			}
 		}
 	}
