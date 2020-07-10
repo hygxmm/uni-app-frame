@@ -16,6 +16,10 @@
 				"enablePullDownRefresh": false
 			}
         }
+        ,{
+            "path" : "pages/goods_list/goods_list",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
@@ -23,12 +27,4 @@
 		"navigationBarBackgroundColor": "#FFFFFF",
 		"backgroundColor": "#F8F8F8"
 	}
-	// ,
-	// "tabBar": {
-	//     "color": "#999999",
-	//     "selectedColor": "#0E948A",
-	//     "borderStyle": "black", 
-	//     "backgroundColor": "#FFFFFF",
-	//     "list": []
-	// }
 }

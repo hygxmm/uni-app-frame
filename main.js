@@ -11,7 +11,6 @@ import cuCustom from './colorui/components/cu-custom.vue';
 Vue.component('cu-custom',cuCustom);
 
 Vue.config.productionTip = false;
-
 Vue.prototype.$store = store;
 Vue.prototype.$config = config;
 Vue.prototype.$http = Request;

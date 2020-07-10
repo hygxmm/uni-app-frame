@@ -10,6 +10,7 @@
 		<view class="margin-top text-theme" @click="tologin">去登陆</view>
 		<button @click="getAddr">测试接口报错是否会跳转登录页</button>
 		<button @click="navToCustomer">联系客服</button>
+		<button @click="addCart">加入购物车动画</button>
 	</view>
 </template>
 
@@ -60,6 +61,11 @@
 			navToCustomer(){
 				uni.navigateTo({
 					url: '/pages/chat/chat?kfid=1'
+				})
+			},
+			addCart(){
+				uni.navigateTo({
+					url: '/pages/goods_list/goods_list'
 				})
 			}
 		}

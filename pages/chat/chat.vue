@@ -3,36 +3,66 @@
 		<!-- 聊天列表 -->
 		
 		<scroll-view 
-			class="bg-brown scroll-box cu-chat" 
+			class="bg-brown scroll-box" 
 			scroll-y 
 			:scroll-with-animation="true"
 			:scroll-top="scrollTop"
 			:scroll-into-view="scrollToView"
 		>
-			<!-- <view class="cu-chat"> -->
-				<!-- 自己发的消息 -->
-				<view class="cu-item self" v-for="(item,index) in 10" :key="index">
-					<view class="main">
-						<view class="content bg-green shadow">
-							<text>喵喵喵！喵喵喵！喵喵喵！喵喵！喵喵！！喵！喵喵喵！</text>
+			<block v-for="(item,index) in messages" :key="index">
+				<view class="cu-chat" :id="'msg_'+index">
+					<!-- 咨询消息 -->
+					<view v-if="item.type == 'consult'">
+						<view class="radius bg-white padding">
+							<view class="flex justify-between" v-if="row.data.order_sn">
+								<text class="text-xs">订单号: {{row.data.order_sn}}</text>
+								<text class="text-xs text-999">{{row.data.createTime}}</text>
+							</view>
+							<view class="flex margin-top-xs overHiddren">
+								<view class="block-100">
+									<image class="radius" :src="row.data.goods_thumb" mode="aspectFill"></image>
+								</view>
+								<view class="flex-sub margin-left-sm overHiddren">
+									<view class="text-xs text-cut-2">{{row.data.goods_name}}</view>
+									<view class="text-xs flex justify-between margin-top-sm">
+										<view class="text-xs text-price text-333 text-bold">{{row.data.goods_price}}</view>
+										<view class="text-xs text-theme">{{row.data.orderStatus}}</view>
+									</view>
+								</view>
+							</view>
+							<view class="text-center flex align-center margin-top-sm justify-center" @click="sendLink">
+								<text class="text-xs text-theme">发送链接</text>
+								<text class="margin-left-xs text-theme cuIcon-right" style="font-size: 20rpx;"></text>
+							</view>
 						</view>
 					</view>
-					<view class="cu-avatar radius" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big107000.jpg);"></view>
-					<view class="date">2018年3月23日 13:23</view>
-				</view>
-				<!-- 系统消息 -->
-				<view class="cu-info round">对方撤回一条消息!</view>
-				<!-- 别人发的消息 -->
-				<view class="cu-item">
-					<view class="cu-avatar radius" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big143004.jpg);"></view>
-					<view class="main">
-						<view class="content shadow">
-							<text>喵喵喵！喵喵喵！</text>
+					<!-- 系统消息 -->
+					<view class="cu-info round" v-else-if="item.type == 'system'">{{item.content}}</view>
+					<block v-else>
+						<!-- 自己发的消息 -->
+						<view class="cu-item self" v-if="item.uid == user.id">
+							<view class="main">
+								<view class="content bg-green shadow">
+									<text>喵喵喵！喵喵喵！喵喵喵！喵喵！喵喵！！喵！喵喵喵！</text>
+								</view>
+							</view>
+							<view class="cu-avatar radius" style="background-image: url(https://ossweb-img.qq.com/images/lol/web201310/skin/big107000.jpg);"></view>
+							<!-- <view class="date">2018年3月23日 13:23</view> -->
 						</view>
-					</view>
-					<view class="date "> 13:23</view>
+						<!-- 别人发的消息 -->
+						<view class="cu-item" v-else>
+							<view class="cu-avatar radius" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big143004.jpg);"></view>
+							<view class="main">
+								<view class="content shadow">
+									<text>喵喵喵！喵喵喵！</text>
+								</view>
+							</view>
+							<view class="date "> 13:23</view>
+						</view>
+					</block>
 				</view>
-			<!-- </view> -->
+			</block>
+			
 		</scroll-view>
 	
 		<!-- 底部输入框 -->
@@ -266,20 +296,21 @@
 			},
 			screenMsg(msg){
 				//
-				switch(msg.type){
-					case 'text':
-						this.addTextMsg();
-					break;
-					case 'voice':
-						this.addVoiceMsg();
-					break;
-					case 'img':
-						this.addImgMsg();
-					break;
-					case 'link':
-						this.addLinkMsg();
-					break;
-				}
+				// switch(msg.type){
+				// 	case 'text':
+				// 		this.addTextMsg();
+				// 	break;
+				// 	case 'voice':
+				// 		this.addVoiceMsg();
+				// 	break;
+				// 	case 'img':
+				// 		this.addImgMsg();
+				// 	break;
+				// 	case 'link':
+				// 		this.addLinkMsg();
+				// 	break;
+				// }
+				this.messages.push(msg);
 				this.$nextTick(() => {
 					this.scrollToView = 'msg_'+msg.id;
 				})
@@ -288,7 +319,9 @@
 				
 				
 			},
+			// 添加文字消息
 			addTextMsg(){},
+			// 添加
 			addImgMsg(){},
 			addVoiceMsg(){},
 			addLinkMsg(){},
