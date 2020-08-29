@@ -4,8 +4,9 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
+	strict: process.env.NODE_ENV !== 'production',
 	state: {
-		themeColor: '#0E948A', // 主题色
+		themeColor: '#F02523', // 主题色
 		hasLogin: false, // 登录状态
 		userInfo: {
 			"user_token": "c3bc28c1-0f7a-46f7-3189-0e376f58fe9e",

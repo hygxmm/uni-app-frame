@@ -2,7 +2,7 @@
 	import Vue from 'vue';
 	// #ifdef APP-PLUS
 	// 引入软件更新模块
-	import update from '@/common/update';
+	// import update from '@/common/update';
 	// #endif
 	export default {
 		onLaunch: function() {
@@ -37,7 +37,7 @@
 			// #ifdef APP-PLUS
 			plus.screen.lockOrientation('portrait-primary'); //竖屏正方向锁定
 			// 检测升级
-			update.init();
+			// update.init();
 			// #endif
 		},
 		onShow: function() {

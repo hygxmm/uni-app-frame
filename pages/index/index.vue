@@ -11,6 +11,10 @@
 		<button @click="getAddr">测试接口报错是否会跳转登录页</button>
 		<button @click="navToCustomer">联系客服</button>
 		<button @click="addCart">加入购物车动画</button>
+		<button @click="uploadImage">上传图片</button>
+		<button @click="sharePoster">分享海报测试</button>
+		<button @click="addresslist">地址管理</button>
+		
 	</view>
 </template>
 
@@ -67,11 +71,26 @@
 				uni.navigateTo({
 					url: '/pages/goods_list/goods_list'
 				})
+			},
+			uploadImage(){
+				uni.navigateTo({
+					url: '/pages/upload/upload'
+				})
+			},
+			sharePoster(){
+				uni.navigateTo({
+					url: '/pages/shareDemoPage/shareDemoPage'
+				})
+			},
+			addresslist(){
+				uni.navigateTo({
+					url: '/pages/address/address'
+				})
 			}
 		}
 	}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 </style>
