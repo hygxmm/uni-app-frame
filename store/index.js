@@ -8,18 +8,7 @@ const store = new Vuex.Store({
 	state: {
 		themeColor: '#F02523', // 主题色
 		hasLogin: false, // 登录状态
-		userInfo: {
-			"user_token": "c3bc28c1-0f7a-46f7-3189-0e376f58fe9e",
-			"id": 12,
-			"head_img": "https://wx.qlogo.cn/mmopen/vi_32/Q3auHgzwzM5fHibMuHpkOgbpLe0JQ32sVBq2QQsnU6FkibCDgNZTXeRib1srGib8IThIYb911rt7osS2oMwAQicVeuQ/132",
-			"user_name": "默默",
-			"user_nickname": "默默",
-			"sex": 1,
-			"user_type": 0,
-			"user_level": 1,
-			"mobile": "158****5813",
-			"birthday": "1970-01-01"
-		}, // 用户信息
+		userInfo: null, // 用户信息
 	},
 	mutations: {
 		login(state, data) {

@@ -2,74 +2,15 @@
 	"pages": [
 		{
             "path" : "pages/index/index",
-            "style" : {}
-        }
-        ,{
-            "path" : "pages/login/login",
-            "style" : {}
-        }
-        ,{
-            "path" : "pages/chat/chat",
             "style" : {
-				"navigationBarTitleText": "",
-				"navigationBarTextStyle": "black",
-				"enablePullDownRefresh": false
+				
 			}
         }
-        ,{
-            "path" : "pages/goods_list/goods_list",
-            "style" : {}
-        }
-        ,{
-            "path" : "pages/upload/upload",
-            "style" : {}
-        }
-        ,{
-            "path" : "pages/shareDemoPage/shareDemoPage",
-            "style" : {}
-        },
-		{
-			"path": "pages/address/address",
-			"style": {
-				"navigationBarTitleText": "收货地址",
-				"navigationBarTextStyle": "black",
-				"navigationStyle": "custom",
-				"enablePullDownRefresh": true,
-				"app-plus": {
-					"bounce": "none", //关闭窗口回弹效果
-					"scrollIndicator": "none"
-				}
-			}
-		},
-		{
-			"path": "pages/address/add_address",
-			"style": {
-				"navigationBarTitleText": "新增收货地址",
-				"navigationBarTextStyle": "black",
-				"navigationStyle": "custom",
-				"app-plus": {
-					"bounce": "none", //关闭窗口回弹效果
-					"scrollIndicator": "none"
-				}
-			}
-		},
-		{
-			"path": "pages/address/add_address_wc",
-			"style": {
-				"navigationBarTitleText": "新增收货地址",
-				"navigationBarTextStyle": "black",
-				"navigationStyle": "custom",
-				"app-plus": {
-					"bounce": "none", //关闭窗口回弹效果
-					"scrollIndicator": "none"
-				}
-			}
-		}
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "",
 		"navigationBarBackgroundColor": "#FFFFFF",
-		"backgroundColor": "#F8F8F8"
+		"backgroundColor": "#FFFFFF"
 	}
 }
