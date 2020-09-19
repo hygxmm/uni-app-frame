@@ -1,9 +1,5 @@
 <script>
 	import Vue from 'vue';
-	// #ifdef APP-PLUS
-	// 引入软件更新模块
-	// import update from '@/common/update';
-	// #endif
 	export default {
 		onLaunch: function() {
 			console.log('App 启动')
@@ -32,12 +28,19 @@
 					Vue.prototype.StatusBar = e.statusBarHeight;
 					Vue.prototype.CustomBar = e.statusBarHeight + e.titleBarHeight;
 					// #endif
+					Vue.mixin({
+						data(){
+							return {
+								StatusBar: Vue.prototype.StatusBar,
+								CustomBar: Vue.prototype.CustomBar,
+							}
+						}
+					})
 				}
 			})
 			// #ifdef APP-PLUS
-			plus.screen.lockOrientation('portrait-primary'); //竖屏正方向锁定
-			// 检测升级
-			// update.init();
+			//竖屏正方向锁定
+			plus.screen.lockOrientation('portrait-primary');
 			// #endif
 		},
 		onShow: function() {
