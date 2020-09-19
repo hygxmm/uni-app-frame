@@ -42,6 +42,23 @@
 		},
 		onShow: function() {
 			console.log('App 显示');
+            const dcRichAlert = uni.requireNativePlugin('DCloud-RichAlert');
+            console.log("showRichAlert");
+            dcRichAlert.show({
+                shortcut : '[{"id":"1","describe":"第一个页面","icon":"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2112859263,1176986998&fm=26&gp=0.jpg","shortlabel":"看直播","longlabel":"看直播"},{"id":"2","describe":"第二个页面","icon":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1598450933376&di=d005efa03feb6c307fbbd5261369db80&imgtype=0&src=http%3A%2F%2Fimg.haima.me%2Fandr%2Fwdj%2F73%2Fe6%2F73e6880f3115c1ccc7f41cb444ff89eb%2Fd860f0d09a272b4f1a11759057bae9da.png","shortlabel":"看视频","longlabel":"看视频"}]'
+                }, result => {
+                console.log(result);
+                const msg = JSON.stringify(result);
+                console.log(msg);
+                switch (result.post) {
+                    case 'success':
+                        console.log(result.id);
+                        break;
+                    case 'error':
+                        
+                        break;
+                }
+            });
 		},
 		onHide: function() {
 			console.log('App 隐藏');

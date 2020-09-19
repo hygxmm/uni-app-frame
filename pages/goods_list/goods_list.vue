@@ -4,7 +4,7 @@
 			<block v-for="(item,index) in 20" :key="index">
 				<view class="padding flex margin-right-sm">
 					<view class="block-150 radius bg-blue margin-right-sm" :id="'animate_box_'+index">
-						<image class="radius" src="../../static/images/goods.jpg" mode="aspectFill"></image>
+						<!-- <image class="radius" src="../../static/images/goods.jpg" mode="aspectFill"></image> -->
 					</view>
 					<view class="flex-sub flex flex-direction justify-between align-start">
 						<view>
@@ -40,7 +40,7 @@
 			return {
 				cartPoint: null,
 				animates: [],
-				animateImg: '../../static/images/goods.jpg',
+				// animateImg: '../../static/images/goods.jpg',
 			};
 		},
 		onLoad() {
@@ -82,7 +82,7 @@
 						this.$set(this.animates[len],'show',false);
 					},550)
 				}).exec();
-				
+
 			}
 		}
 	}
@@ -120,7 +120,7 @@
 	border-radius: 50%;
 	z-index: 9999;
 	transform-origin: 50% 50%;
-	transition: transform linear 0.5s, left linear 0.5s, top cubic-bezier(0.3, -0.2, 1, 0) 0.5s !important; 
+	transition: transform linear 0.5s, left linear 0.5s, top cubic-bezier(0.3, -0.2, 1, 0) 0.5s !important;
 	image {
 		width: 100rpx;
 		height: 100rpx;
