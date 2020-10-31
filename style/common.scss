@@ -1,5 +1,8 @@
+page{
+    --theme: #F02523;
+}
 // 自定义SCSS变量 start
-$theme: #F02523;
+$theme: var(--theme);
 // 自定义SCSS变量 end
 
 page{

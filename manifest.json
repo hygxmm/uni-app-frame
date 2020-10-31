@@ -57,22 +57,7 @@
                 "ad" : {}
             }
         },
-        "nativePlugins" : {
-            "DCloud-RichAlert" : {
-                "__plugin_info__" : {
-                    "name" : "DCloudRichAlert",
-                    "description" : "快捷方式",
-                    "platforms" : "Android",
-                    "url" : "",
-                    "android_package_name" : "",
-                    "ios_bundle_id" : "",
-                    "isCloud" : false,
-                    "bought" : -1,
-                    "pid" : "",
-                    "parameters" : {}
-                }
-            }
-        }
+        "nativePlugins" : {}
     },
     /* 快应用特有相关 */
     "quickapp" : {},
