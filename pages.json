@@ -1,16 +1,43 @@
 {
 	"pages": [
 		{
-            "path" : "pages/index/index",
-            "style" : {
-				
-			}
+            "path" : "pages/index/index"
         }
     ],
 	"globalStyle": {
+        "pageOrientation": "portrait",
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "",
 		"navigationBarBackgroundColor": "#FFFFFF",
-		"backgroundColor": "#FFFFFF"
+        "navigationStyle": "default",
+		"backgroundColor": "#FFFFFF",
+        "backgroundTextStyle": "light",
+        "enablePullDownRefresh": false,
+        "onReachBottomDistance": 50,
+        "backgroundColorTop": "#FFFFFF",
+        "backgroundColorBottom": "#FFFFFF",
+        "transparentTitle": "none",
+        "animationType": "slide-in-right",
+        "app-plus": {
+            "background": "#FFFFFF",
+            "titleNView": {
+                "backgroundColor": "#FFFFFF",
+                "titleColor": "#333333",
+                "titleOverflow":"ellipsis",
+                "titleSize": "16px",
+                "type": "default",
+                "titleAlign": "center",
+                "splitLine": {
+                    "color": "#EEEEEE",
+                    "height": "1px"
+                }
+            },
+            "bounce": "none",
+            "softinputNavBar": "none",
+            "softinputMode": "adjustResize",
+            "pullToRefresh": {},
+            "scrollIndicator": "none",
+            "animationType": "slide-in-right"
+        }
 	}
 }

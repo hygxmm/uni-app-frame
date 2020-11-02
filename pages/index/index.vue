@@ -14,7 +14,8 @@
 		<button @click="uploadImage">上传图片</button>
 		<button @click="sharePoster">分享海报测试</button>
 		<button @click="addresslist">地址管理</button>
-		
+		<button @click="changeTheme">换肤</button>
+
 	</view>
 </template>
 
@@ -86,7 +87,14 @@
 				uni.navigateTo({
 					url: '/pages/address/address'
 				})
-			}
+			},
+            changeTheme(){
+                const color = "#"+(~~(Math.random()*(1<<24))).toString(16);
+                console.log(color);
+                
+
+
+            }
 		}
 	}
 </script>

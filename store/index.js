@@ -45,7 +45,14 @@ const store = new Vuex.Store({
 			uni.navigateTo({
 				url: path
 			})
-		}
+		},
+        setTheme(state,color){
+            state.themeColor = color;
+            
+            
+
+
+        },
 	},
     getters:{
 		uid(state){
@@ -58,6 +65,12 @@ const store = new Vuex.Store({
 	actions: {
 		initApp: async function({commit,state}){
 			const userInfo = uni.getStorageSync('USERINFO');
+			const appTheme = uni.getStorageSync('APPTHEME');
+            if(appTheme){
+
+            }else{
+
+            }
 			if (userInfo) {
 				commit('login',userInfo);
 			};
