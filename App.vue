@@ -1,8 +1,9 @@
 <script>
 	import Vue from 'vue';
+    import checkUpdate from './common/update.js';
 	export default {
 		onLaunch: function() {
-			console.log('App 启动')
+			console.log('App 启动');
 			// 初始化App
 			this.$store.dispatch('initApp');
 			// 自定义头部菜单需要的变量
@@ -41,6 +42,7 @@
 			// #ifdef APP-PLUS
 			//竖屏正方向锁定
 			plus.screen.lockOrientation('portrait-primary');
+            checkUpdate(this.$api.common.appUpdate);
 			// #endif
 		},
 		onShow: function() {

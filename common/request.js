@@ -36,7 +36,7 @@ class Request {
         },
         // 响应拦截器
         response: (response) => {
-			console.log("响应拦截器");
+			console.log("响应拦截器",response);
 			if(response.code == 1){
 				return response;
 			}else if(response.code == -201 ||response.code == -202 || response.code == -203){
