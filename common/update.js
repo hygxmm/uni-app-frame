@@ -148,13 +148,27 @@ function createUpdatePopup(){
 }
 // 下载安装包
 function downloadAPK(url){
+    plus.nativeUI.showWaiting('下载中...');
     uni.downloadFile({
         url: url,
         success: (res) => {
-
+            if (res.statusCode === 200) {
+                plus.runtime.install(
+                    res.tempFilePath,
+                    function(res) {
+                        console.log('确认安装',res);
+                        plus.runtime.restart()
+                    },
+                    function(info) {
+                        console.log('软件包信息',err);
+                    }
+                )
+            }
+        },
+        complete: () => {
+            plus.nativeUI.closeWaiting();
         }
     })
-
 }
 // #endif
 
