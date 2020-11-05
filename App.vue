@@ -1,7 +1,6 @@
 <script>
 	import Vue from 'vue';
     import updateManager from './common/update.js';
-    import config from './common/config.js';
 	export default {
 		onLaunch: function() {
 			console.log('App 启动');
@@ -41,9 +40,9 @@
 				}
 			})
 			// #ifdef APP-PLUS
-			//竖屏正方向锁定
+			// 竖屏正方向锁定
 			plus.screen.lockOrientation('portrait-primary');
-            updateManager(config.apiHost + this.$api.common.appUpdate);
+            // updateManager(config.apiHost + this.$api.common.appUpdate);
 			// #endif
             // #ifdef MP
             updateManager();
