@@ -42,7 +42,6 @@
 			// #ifdef APP-PLUS
 			// 竖屏正方向锁定
 			plus.screen.lockOrientation('portrait-primary');
-            // updateManager(config.apiHost + this.$api.common.appUpdate);
 			// #endif
             // #ifdef MP
             updateManager();
