@@ -77,6 +77,4 @@
 	/* ColorUI样式 */
 	@import "colorui/main.css";
 	@import "colorui/icon.css";
-	/* 自定义公共样式 */
-	// @import "style/common.scss";
 </style>

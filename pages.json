@@ -1,19 +1,25 @@
 {
-	"pages": [
-		{
-            "path" : "pages/index/index",
-            "style": {
-                "navigationBarTitleText": "首页"
+    "pages": [{
+        "path": "pages/index/index",
+        "style": {
+            "navigationBarTitleText": "首页"
+        }
+    }, {
+        "path": "pages/video/video",
+        "style": {
+            "navigationBarTitleText": "仿抖音视频",
+            "app-plus": {
+                "titleNView": false
             }
         }
-    ],
-	"globalStyle": {
+    }],
+    "globalStyle": {
         "pageOrientation": "portrait",
-		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "",
-		"navigationBarBackgroundColor": "#FFFFFF",
+        "navigationBarTextStyle": "black",
+        "navigationBarTitleText": "",
+        "navigationBarBackgroundColor": "#FFFFFF",
         "navigationStyle": "default",
-		"backgroundColor": "#FFFFFF",
+        "backgroundColor": "#FFFFFF",
         "backgroundTextStyle": "light",
         "enablePullDownRefresh": false,
         "onReachBottomDistance": 50,
@@ -26,7 +32,7 @@
             "titleNView": {
                 "backgroundColor": "#FFFFFF",
                 "titleColor": "#333333",
-                "titleOverflow":"ellipsis",
+                "titleOverflow": "ellipsis",
                 "titleSize": "16px",
                 "type": "default",
                 "titleAlign": "center",
@@ -42,5 +48,5 @@
             "scrollIndicator": "none",
             "animationType": "slide-in-right"
         }
-	}
+    }
 }

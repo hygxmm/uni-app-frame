@@ -1,4 +1,5 @@
-import store from '@/store/index.js'
+import store from '@/store/index.js';
+// import Toast from './function/toast.js';
 
 module.exports = {
 	// Toast
