@@ -61,6 +61,9 @@ const store = new Vuex.Store({
 		token(state){
 			return state.userInfo && state.userInfo.user_token || 0;
 		},
+        isLogin(state){
+            return state.userInfo ? true : false;
+        }
     },
 	actions: {
 		initApp: async function({commit,state}){

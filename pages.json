@@ -1,18 +1,21 @@
 {
-    "pages": [{
-        "path": "pages/index/index",
-        "style": {
-            "navigationBarTitleText": "首页"
-        }
-    }, {
-        "path": "pages/video/video",
-        "style": {
-            "navigationBarTitleText": "仿抖音视频",
-            "app-plus": {
-                "titleNView": false
+    "pages": [
+        {
+            "path": "pages/index/index",
+            "style": {
+                "navigationBarTitleText": "首页"
             }
-        }
-    }],
+        } 
+        // {
+        //     "path": "pages/video/video",
+        //     "style": {
+        //         "navigationBarTitleText": "仿抖音视频",
+        //         "app-plus": {
+        //             "titleNView": false
+        //         }
+        //     }
+        // },
+    ],
     "globalStyle": {
         "pageOrientation": "portrait",
         "navigationBarTextStyle": "black",
