@@ -7,5 +7,6 @@ module.exports = {
     		config.optimization.minimizer[0].options.terserOptions.compress.drop_debugger = true
     		config.optimization.minimizer[0].options.terserOptions.compress.pure_funcs = ['console.log']
     	}
+        config.devServer.disableHostCheck = true; // 关闭Host检查
     }
 }
