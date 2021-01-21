@@ -1,18 +1,22 @@
 <template>
     <view class="page">
-        <list>
-            <cell v-for="(item,index) in cells" :key="item.title">
+        <view>
+            <view v-for="(item,index) in cells" :key="item.title">
                 <view class="list-cell-item" @click="jumpTo" :data-url="item.path">{{item.title}}</view>
-            </cell>
-        </list>
-        <button @click="openModal">打开弹窗</button>
-        <button @click="closeModal">关闭弹窗</button>
+            </view>
+        </view>
+        <button @click="chooseAvatar">
+            <view>
+                <button>头像</button>
+                <image class="avatar" src=""></image>
+            </view>
+        </button>
     </view>
 </template>
 
 <script>
     const lists = [
-        // {title: '仿抖音视频播放',path: '/pages/video/video'},
+        // {title: '裁剪头像',path: '/pages/video/video'},
 
     ];
     export default {
@@ -34,13 +38,21 @@
                     }
                 })
             },
-            closeModal(){
-                
+            chooseAvatar(){
+                uni.chooseImage({
+                    count: 1,
+                    sizeType: ['original','compressed'],
+                    sourceType: ['album','camera'],
+                    success: res => {
+                        const filePath = res.tempFilePaths[0];
+                        console.log('filePath',filePath);
+                        uni.navigateTo({
+                            url: '/pages/image-cropper/image-cropper?src='+filePath
+                        })
+                    }
+                })
             },
         },
-        onReady() {
-
-        }
     }
 </script>
 
@@ -50,9 +62,16 @@
         height: 100rpx;
         align-items: flex-start;
         justify-content: center;
-        font-size: 24rpx;
+        font-size: 28rpx;
+        line-height: 100rpx;
         color: #666666;
         border-bottom-width: 1rpx;
         border-bottom-color: #eeeeee;
+    }
+    .avatar{
+        width: 120rpx;
+        height: 120rpx;
+        border-radius: 50%;
+        background-color: #999999;
     }
 </style>

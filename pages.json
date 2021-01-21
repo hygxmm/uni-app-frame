@@ -5,7 +5,20 @@
             "style": {
                 "navigationBarTitleText": "首页"
             }
-        } 
+        }
+        ,{
+            "path" : "pages/image-cropper/image-cropper",
+            "style" :
+            {
+                "navigationBarTitleText": "图片裁剪",
+                "enablePullDownRefresh": false,
+                "navigationStyle":"custom",
+                "app-plus": {
+                    "titleNView": false
+                }
+            }
+
+        }
     ],
     "globalStyle": {
         "pageOrientation": "portrait",
