@@ -5,19 +5,22 @@
                 <view class="list-cell-item" @click="jumpTo" :data-url="item.path">{{item.title}}</view>
             </view>
         </view>
-        <button @click="chooseAvatar">
-            <view>
-                <button>头像</button>
-                <image class="avatar" src=""></image>
-            </view>
-        </button>
     </view>
 </template>
 
 <script>
     const lists = [
-        // {title: '裁剪头像',path: '/pages/video/video'},
-
+        // {title: '切换主题',path: '/pages/theme/theme'},
+        // #ifdef APP-PLUS
+        {title: '一键登录测试',path: '/pages/login/login'},
+        // #endif
+        {title: 'A页面',path: '/pages/moduleA/a/a'},
+        {title: 'B页面',path: '/pages/moduleB/b/b'},
+        {title: 'B页面',path: '/pages/moduleB/b/b'},
+        // #ifdef MP-WEIXIN
+        {title: '去登录',path: '/pages/login/wx-login'},
+        // #endif
+        {title: '动画',path: '/pages/animate/animate'},
     ];
     export default {
         data() {
@@ -73,5 +76,8 @@
         height: 120rpx;
         border-radius: 50%;
         background-color: #999999;
+    }
+    .height-88{
+      height: 88rpx;
     }
 </style>

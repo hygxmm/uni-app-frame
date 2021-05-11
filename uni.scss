@@ -13,7 +13,9 @@
  */
 
 /* 自定义主题色 */
-$theme: '#f02523';
+
+// $theme: #f02523;
+$theme: var(--theme);
 
 /* 行为相关颜色 */
 $uni-color-primary: #007aff;

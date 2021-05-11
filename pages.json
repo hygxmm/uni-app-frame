@@ -1,59 +1,99 @@
 {
-    "pages": [
-        {
-            "path": "pages/index/index",
-            "style": {
-                "navigationBarTitleText": "首页"
-            }
-        }
-        ,{
-            "path" : "pages/image-cropper/image-cropper",
-            "style" :
+  "pages": [{
+      "path": "pages/index/index",
+      "style": {
+        "navigationBarTitleText": "首页",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/login/login",
+      "style": {
+        "navigationBarTitleText": "登录",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/login/wx-login",
+      "style": {
+        "navigationBarTitleText": "小程序登录",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/moduleB/b/b",
+      "style": {
+        "navigationBarTitleText": "B页面",
+        "enablePullDownRefresh": false
+      }
+    }
+      ,{
+            "path" : "pages/animate/animate",
+            "style" :                                                                                    
             {
-                "navigationBarTitleText": "图片裁剪",
-                "enablePullDownRefresh": false,
-                "navigationStyle":"custom",
-                "app-plus": {
-                    "titleNView": false
-                }
+                "navigationBarTitleText": "动画API",
+                "enablePullDownRefresh": false
             }
-
+            
         }
     ],
-    "globalStyle": {
-        "pageOrientation": "portrait",
-        "navigationBarTextStyle": "black",
-        "navigationBarTitleText": "",
-        "navigationBarBackgroundColor": "#FFFFFF",
-        "navigationStyle": "default",
-        "backgroundColor": "#FFFFFF",
-        "backgroundTextStyle": "light",
-        "enablePullDownRefresh": false,
-        "onReachBottomDistance": 50,
-        "backgroundColorTop": "#FFFFFF",
-        "backgroundColorBottom": "#FFFFFF",
-        "transparentTitle": "none",
-        "animationType": "slide-in-right",
-        "app-plus": {
-            "background": "#FFFFFF",
-            "titleNView": {
-                "backgroundColor": "#FFFFFF",
-                "titleColor": "#333333",
-                "titleOverflow": "ellipsis",
-                "titleSize": "16px",
-                "type": "default",
-                "titleAlign": "center",
-                "splitLine": {
-                    "color": "#EEEEEE",
-                    "height": "1px"
-                }
-            },
-            "bounce": "none",
-            "softinputNavBar": "none",
-            "softinputMode": "adjustResize",
-            "pullToRefresh": {},
-            "scrollIndicator": "none",
-            "animationType": "slide-in-right"
+  "subPackages": [{
+      "root": "pages/moduleA",
+      "pages": [{
+        "path": "a/a",
+        "style": {
+          "navigationBarTitleText": "A页面",
+          "enablePullDownRefresh": false
         }
+      }]
     }
+    // {
+    //     "root": "pages/moduleB",
+    //     "pages": [
+    //         {
+    //             "path" : "b/b",
+    //             "style" : {
+    //                 "navigationBarTitleText": "B页面",
+    //                 "enablePullDownRefresh": false
+    //             }
+    //         }
+    //     ]
+    // }
+  ],
+  "globalStyle": {
+    "pageOrientation": "portrait",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationStyle": "default",
+    "backgroundColor": "#FFFFFF",
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": false,
+    "onReachBottomDistance": 50,
+    "backgroundColorTop": "#FFFFFF",
+    "backgroundColorBottom": "#FFFFFF",
+    "transparentTitle": "none",
+    "animationType": "slide-in-right",
+    "app-plus": {
+      "background": "#FFFFFF",
+      "titleNView": {
+        "backgroundColor": "#FFFFFF",
+        "titleColor": "#333333",
+        "titleOverflow": "ellipsis",
+        "titleSize": "16px",
+        "type": "default",
+        "titleAlign": "center",
+        "splitLine": {
+          "color": "#EEEEEE",
+          "height": "1px"
+        }
+      },
+      "bounce": "none",
+      "softinputNavBar": "none",
+      "softinputMode": "adjustResize",
+      "pullToRefresh": {},
+      "scrollIndicator": "none",
+      "animationType": "slide-in-right"
+    }
+  }
 }
